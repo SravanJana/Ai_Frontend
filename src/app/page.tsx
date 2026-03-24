@@ -296,7 +296,10 @@ export default function DashboardPage() {
 				</div>
 			)}
 			<GenieChatWidget
-				onSendMessage={api.sendChatMessage}
+				onSendMessage={async (message) => {
+					const res = await api.sendChatMessage(1, message);
+					return res.response || "";
+				}}
 				suggestions={[]}
 				fontSize="sm"
 				animateFromCorner
